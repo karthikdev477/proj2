@@ -1,0 +1,31 @@
+//below is the configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-example
+data:
+   FILE: html
+
+//below is the File.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-demo-pod
+  labels:
+    name: demo
+spec:
+  containers:
+    - name: html-v1
+      image: kart10/kart10:v1-html
+      envFrom:
+      - configMapRef:
+          name: cm-example
+
+//below is the html file
+<html>
+   <body>
+             <h1>first kubernets deploy</h1>
+             <h2>ENV["FILE"]</h2>
+</body>
+</html>
