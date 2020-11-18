@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Getting code from GitHub') {
       steps {
-        git ''
+        git 'https://github.com/karthikdev477/proj2.git'
       }
     }
     stage('Image Build') {
