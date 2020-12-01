@@ -1,35 +1,20 @@
 pipeline {
-  environment {
-    registry = "kart10/kart10"
-    registryCredential = 'new'
-    dockerImage = ''
-  }
   agent any
+  tools {nodejs "node" }
   stages {
-    stage('Getting code from GitHub') {
+    stage('Cloning Git') {
       steps {
-        git 'https://github.com/karthikdev477/proj2.git'
+        git 'https://github.com/karthikdev477/proj2'
       }
     }
-    stage('Image Build') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
+    stage('Build') {
+       steps {
+         sh 'npm install'
+       }
     }
-    stage('Image Deploy and Push') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+    stage('Test') {
+      steps {
+        sh 'npm test'
       }
     }
   }
