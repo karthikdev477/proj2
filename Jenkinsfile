@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "kart10/kart10"
-    registryCredential = 'jenkins'
+    registryCredential = 'new'
     dockerImage = ''
   }
   agent any
