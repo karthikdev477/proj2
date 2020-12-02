@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: voting-app
-          image: kart10/kart:3
+          image: kart10/kart10:latest
           ports:
             - containerPort: 80
     
