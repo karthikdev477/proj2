@@ -5,12 +5,6 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/karthikdev477/proj2.git'
-      }
-    }
     stage('Building image') {
       steps{
         script {
