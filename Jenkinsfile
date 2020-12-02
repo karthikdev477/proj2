@@ -48,8 +48,8 @@ pipeline {
         stage("clean up") {
             steps {
                 sleep(30) 
-                sh 'kubectl delete deployment webapp1'
-                sh 'kubectl delete svc web-service'
+                sh 'kubectl delete deployment voting-app-deploy'
+                sh 'kubectl delete svc '
             }
         }
     }    
