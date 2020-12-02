@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "kart10/kart10"
-    registryCredential = 'kart10'
+    registryCredential = 'kart'
     dockerImage = ''
   }
   agent any
