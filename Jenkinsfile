@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "kart10/kart10"
-    registryCredential = 'doc'
+    registryCredential = 'kart10'
     dockerImage = ''
   }
   agent any
@@ -32,5 +32,27 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-  }
+      stage('Deploy to GKE') {
+            steps{
+                sh 'kubectl apply -f Deployment.yaml'
+                sh 'kubectl apply -f Service.yaml'
+            }
+        }
+        stage("Get frontend service") {
+            steps {
+                sleep(50) 
+                sh 'kubectl get svc'
+                sh 'kubectl get pods'
+            }
+        }
+        stage("clean up") {
+            steps {
+                sleep(30) 
+                sh 'kubectl delete deployment web-app'
+                sh 'kubectl delete svc web-service'
+            }
+        }
+    }    
 }
+    
+ 
