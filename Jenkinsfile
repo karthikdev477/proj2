@@ -34,8 +34,8 @@ pipeline {
     }
       stage('Deploy to GKE') {
             steps{
-                sh 'kubectl apply -f Deployment.yaml'
-                sh 'kubectl apply -f Service.yaml'
+                sh 'kubectl apply -f Deploy.yaml'
+                sh 'kubectl apply -f Serv.yaml'
             }
         }
         stage("Get frontend service") {
