@@ -49,7 +49,7 @@ pipeline {
             steps {
                 sleep(30) 
                 sh 'kubectl delete deployment voting-app-deploy'
-                sh 'kubectl delete svc '
+                sh 'kubectl delete svc voting-service'
             }
         }
     }    
