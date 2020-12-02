@@ -22,7 +22,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+            dockerImage.push("latest")
           }
         }
       }
@@ -34,8 +34,8 @@ pipeline {
     }
       stage('Deploy to GKE') {
             steps{
-                sh 'kubectl apply -f Deploy.yaml'
-                sh 'kubectl apply -f Serv.yaml'
+                sh 'kubectl apply -f deploy.yaml'
+                sh 'kubectl apply -f serv.yaml'
             }
         }
         stage("Get frontend service") {
