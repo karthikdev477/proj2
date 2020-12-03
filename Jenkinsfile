@@ -40,14 +40,10 @@ pipeline {
                 sh 'kubectl get pods'
             }
         }
-        stage("clean up") {
-            steps {
-                sleep(30) 
-                sh 'kubectl delete deployment voting-app-deploy'
-                sh 'kubectl delete svc voting-service'
-            }
+       
+           
         }
     }    
-}
+
     
  
